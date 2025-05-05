@@ -1,4 +1,4 @@
-use juniper::{EmptyMutation, EmptySubscription, FieldResult, RootNode, GraphQLObject};
+use juniper::{EmptyMutation, EmptySubscription, FieldResult, GraphQLObject, RootNode};
 
 #[derive(GraphQLObject)]
 #[graphql(description = "Ping me!")]
