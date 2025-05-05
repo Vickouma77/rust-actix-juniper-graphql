@@ -3,10 +3,18 @@ name = "rust-actix-juniper-graphql"
 version = "0.1.0"
 edition = "2024"
 
+[[bin]]
+path = "src/main"
+name = "rust-actix-juniper-graphql"
+
+[lib]
+path = "src/lib.rs"
+
 [dependencies]
 actix-cors = "0.7.1"
 actix-web = "4.10.2"
 actix-web-lab = "0.24.1"
 env_logger = "0.11.8"
+juniper = "0.16.1"
 log = "0.4.27"
 tokio = { version = "1.33.0", features = ["rt", "rt-multi-thread", "macros"] }
