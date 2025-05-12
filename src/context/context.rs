@@ -1,4 +1,4 @@
-use crate::schema::{User, Post};
+use crate::schema::{Post, User};
 
 #[derive(Clone)]
 pub struct Context {
@@ -32,7 +32,7 @@ impl Context {
                     title: "First Post".to_string(),
                     content: "Hello, GraphQL!".to_string(),
                     author_id: "1".to_string(),
-            },
+                },
                 Post {
                     id: "2".to_string(),
                     title: "Second Post".to_string(),

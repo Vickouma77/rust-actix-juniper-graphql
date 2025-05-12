@@ -1,13 +1,13 @@
-use juniper::{EmptySubscription, RootNode};
 use crate::context::Context;
-use crate::resolver::{Query, Mutation};
+use crate::resolver::{Mutation, Query};
+use juniper::{EmptySubscription, RootNode};
 
 #[derive(Clone)]
 pub struct User {
     pub id: String,
     pub name: String,
     pub email: String,
-    pub posts: Vec<Post>,   
+    pub posts: Vec<Post>,
 }
 
 #[derive(Clone)]

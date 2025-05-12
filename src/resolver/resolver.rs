@@ -1,8 +1,8 @@
-use juniper::{graphql_object, graphql_value, FieldResult, FieldError};
-use log::{info, debug, error};
 use crate::auth::login;
 use crate::context::Context;
-use crate::schema::{User, Post};
+use crate::schema::{Post, User};
+use juniper::{FieldError, FieldResult, graphql_object, graphql_value};
+use log::{debug, error, info};
 
 pub struct Query;
 
@@ -41,7 +41,11 @@ impl User {
 impl Post {
     fn author(&self, context: &Context) -> FieldResult<Option<User>> {
         debug!("Fetching author for post: {}", self.id);
-        Ok(context.users.iter().find(|user| user.id == self.author_id).cloned())
+        Ok(context
+            .users
+            .iter()
+            .find(|user| user.id == self.author_id)
+            .cloned())
     }
 }
 

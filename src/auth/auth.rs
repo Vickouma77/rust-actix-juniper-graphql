@@ -1,8 +1,8 @@
-use juniper::{FieldResult, graphql_value};
-use jsonwebtoken::{encode, decode, Header, EncodingKey, DecodingKey, Validation};
-use log::{info, error};
-use serde::{Serialize, Deserialize};
 use crate::context::Context;
+use jsonwebtoken::{DecodingKey, EncodingKey, Header, Validation, decode, encode};
+use juniper::{FieldResult, graphql_value};
+use log::{error, info};
+use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize)]
 pub struct Claims {
@@ -19,7 +19,9 @@ pub fn login(context: &Context, email: String) -> FieldResult<String> {
             error!("Login failed: User not found for email: {}", email);
             juniper::FieldError::new("User not found", graphql_value!({}))
         })?;
-    let claims = Claims { sub: user.id.clone() };
+    let claims = Claims {
+        sub: user.id.clone(),
+    };
     let token = encode(
         &Header::default(),
         &claims,
